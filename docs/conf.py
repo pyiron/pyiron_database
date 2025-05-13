@@ -16,6 +16,7 @@ import importlib.util
 import os
 import shutil
 import subprocess
+
 from sphinx.ext.apidoc import main
 
 # If extensions (or modules to document with autodoc) are in another directory,
