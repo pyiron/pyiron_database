@@ -22,8 +22,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "h5py==3.13.0",
-    "pyiron_workflow==0.12.0",
+    "h5py==3.12.1",
+    "pyiron_workflow==0.12.3",
     "setuptools==80.1.0",
     "versioneer[toml]==0.29",
 ]
