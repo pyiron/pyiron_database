@@ -3,9 +3,8 @@ import json
 from collections.abc import Iterable
 from typing import Any
 
-from pyiron_workflow import NOT_DATA
+from pyiron_workflow.api import NOT_DATA, Workflow
 from pyiron_workflow.node import Node
-from pyiron_workflow.workflow import Workflow
 
 from pyiron_database.generic_storage import HDF5Storage, JSONGroup
 from pyiron_database.obj_reconstruction.util import get_type, recreate_obj
