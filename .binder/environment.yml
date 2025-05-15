@@ -3,4 +3,4 @@ channels:
 dependencies:
 - h5py =3.12.1
 - numpy =2.2.2
-- pyiron_workflow =0.12.3
+- pyiron_workflow =0.13.0
