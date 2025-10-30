@@ -35,7 +35,7 @@ authors = [
 [project.optional-dependencies]
 neo4j = ["neo4j-python-driver-rust-ext==5.25.0.0"]
 postgresql = [
-  "psycopg2==2.9.10",
+  "psycopg2==2.9.11",
   "sqlalchemy==2.0.44",
 ]
 
