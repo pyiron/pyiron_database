@@ -24,7 +24,7 @@ classifiers = [
 dependencies = [
     "h5py==3.14.0",
     "pyiron_workflow==0.13.3",
-    "setuptools==80.9.0",
+    "setuptools==82.0.0",
     "versioneer[toml]==0.29",
 ]
 dynamic = [ "version",]
