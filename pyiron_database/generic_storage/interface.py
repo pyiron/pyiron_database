@@ -4,7 +4,7 @@ import abc
 from collections.abc import MutableMapping
 from typing import Any
 
-from pyiron_database.obj_reconstruction.util import recreate_type
+from pyiron_snippets import retrieve, versions
 
 
 def _save_join(separator, items):
@@ -12,6 +12,16 @@ def _save_join(separator, items):
         if separator in it:
             raise ValueError(f"Separator ({separator}) not allowed in item ({it})")
     return separator.join(items)
+
+
+def _recreate_type(
+    module_name: str, qualname: str, version: str, strict_version_check: bool = False
+) -> Any:
+    if strict_version_check:
+        actual_version = versions.get_version(module_name)
+        if actual_version != version:
+            raise ValueError(f"Version mismatch: {version} != {actual_version}")
+    return retrieve.import_from_string(f"{module_name}.{qualname}")
 
 
 class StorageGroup(MutableMapping[str, Any], abc.ABC):
@@ -39,7 +49,7 @@ class StorageGroup(MutableMapping[str, Any], abc.ABC):
                 return group
             case "type":
                 module, qualname, version = group["_class"].split(self.separator)
-                return recreate_type(
+                return _recreate_type(
                     module,
                     qualname,
                     version,
@@ -67,7 +77,7 @@ class StorageGroup(MutableMapping[str, Any], abc.ABC):
                 return tuple(lst)
             case "global":
                 module, qualname, version = group["_class"].split(self.separator)
-                return recreate_type(
+                return _recreate_type(
                     module,
                     qualname,
                     version,
