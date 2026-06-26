@@ -3,12 +3,11 @@ import json
 from collections.abc import Iterable
 from typing import Any
 
-from pyiron_snippets import versions
+from pyiron_snippets import retrieve, versions
 from pyiron_workflow.api import NOT_DATA, Workflow
 from pyiron_workflow.node import Node
 
 from pyiron_database.generic_storage import HDF5Storage, JSONGroup, StorageGroup
-from pyiron_database.obj_reconstruction.util import recreate_obj
 
 from .InstanceDatabase import InstanceDatabase
 
@@ -68,7 +67,7 @@ def restore_node_outputs(node: Node) -> bool:
 def recreate_node(
     module: str, qualname: str, version: str, init_args: dict[str, Any]
 ) -> Node:
-    return recreate_obj(module, qualname, version, init_args)
+    return retrieve.import_from_string(f"{module}.{qualname}")(**init_args)
 
 
 def node_to_jsongroup(node: Node) -> JSONGroup:

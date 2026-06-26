@@ -11,9 +11,3 @@ def recreate_type(
         if actual_version != version:
             raise ValueError(f"Version mismatch: {version} != {actual_version}")
     return retrieve.import_from_string(f"{module_name}.{qualname}")
-
-
-def recreate_obj(
-    module: str, qualname: str, version: str, init_args: dict[str, Any]
-) -> Any:
-    return retrieve.import_from_string(f"{module}.{qualname}")(**init_args)
