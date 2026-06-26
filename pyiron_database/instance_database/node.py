@@ -3,11 +3,12 @@ import json
 from collections.abc import Iterable
 from typing import Any
 
+from pyiron_snippets import versions
 from pyiron_workflow.api import NOT_DATA, Workflow
 from pyiron_workflow.node import Node
 
-from pyiron_database.generic_storage import HDF5Storage, JSONGroup
-from pyiron_database.obj_reconstruction.util import get_type, recreate_obj
+from pyiron_database.generic_storage import HDF5Storage, JSONGroup, StorageGroup
+from pyiron_database.obj_reconstruction.util import recreate_obj
 
 from .InstanceDatabase import InstanceDatabase
 
@@ -71,7 +72,7 @@ def recreate_node(
 
 
 def node_to_jsongroup(node: Node) -> JSONGroup:
-    module, qualname, version = get_type(node)
+    info = versions.VersionInfo.of(node.__class__)
     connected_inputs = [input.label for input in node.inputs if input.connected]
     json_group = JSONGroup({})
     json_group.update(
@@ -79,9 +80,9 @@ def node_to_jsongroup(node: Node) -> JSONGroup:
             "inputs": node_inputs_to_jsongroup(node).data,
             "outputs": [o for o, _ in node.outputs.items()],
             "node": {
-                "qualname": qualname,
-                "module": module,
-                "version": version,
+                "qualname": info.qualname,
+                "module": info.module,
+                "version": info.version or StorageGroup.undefined_version,
                 "connected_inputs": connected_inputs,
             },
         }

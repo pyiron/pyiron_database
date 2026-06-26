@@ -3,11 +3,6 @@ from typing import Any
 from pyiron_snippets import retrieve, versions
 
 
-def get_type(cls: Any) -> tuple[str, str, str]:
-    info = versions.VersionInfo.of(cls.__class__)
-    return info.module, info.qualname, info.version or "not_defined"
-
-
 def recreate_type(
     module_name: str, qualname: str, version: str, strict_version_check: bool = False
 ) -> Any:
