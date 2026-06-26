@@ -23,6 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "h5py==3.16.0",
+    "pyiron_snippets==1.4.0",
     "pyiron_workflow==0.13.3",
     "setuptools==82.0.1",
     "versioneer[toml]==0.29",

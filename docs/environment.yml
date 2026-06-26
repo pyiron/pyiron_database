@@ -9,4 +9,5 @@ dependencies:
 - versioneer
 - h5py =3.14.0
 - numpy =2.2.2
+- pyiron_snippets =1.4.0
 - pyiron_workflow =0.13.3

@@ -2,6 +2,7 @@ channels:
   - conda-forge
 dependencies:
   - h5py =3.12.1
-  - numpy =2.2.2
+  - numpy =2.2.
+  - pyiron_snippets =1.4.0
   - pyiron_workflow =0.13.0
 
