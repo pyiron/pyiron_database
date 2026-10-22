@@ -24,7 +24,7 @@ classifiers = [
 dependencies = [
     "h5py==3.16.0",
     "pyiron_workflow==0.13.3",
-    "setuptools==82.0.1",
+    "setuptools==84.0.0",
     "versioneer[toml]==0.29",
 ]
 dynamic = [ "version",]
@@ -36,7 +36,7 @@ authors = [
 neo4j = ["neo4j-python-driver-rust-ext==5.25.0.0"]
 postgresql = [
   "psycopg2==2.9.13",
-  "sqlalchemy==2.0.51",
+  "sqlalchemy==2.0.54",
 ]
 
 [project.license]
