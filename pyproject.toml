@@ -36,7 +36,7 @@ authors = [
 neo4j = ["neo4j-python-driver-rust-ext==5.25.0.0"]
 postgresql = [
   "psycopg2==2.9.13",
-  "sqlalchemy==2.0.55",
+  "sqlalchemy==2.0.57",
 ]
 
 [project.license]
